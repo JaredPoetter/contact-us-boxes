@@ -74,6 +74,10 @@ Note: If you're on a mobile device, tapping on the box will redirect you to your
 
 `buttonLabel` - The button label for the SMS channel.
 
+`buttonAriaLabel` - The button aria label for the SMS channel.
+
+`iconAriaLabel` - The icon aria label for the SMS channel.
+
 `modalTitle` - The title in the modal presented when you select SMS.
 
 `modalPrompt` - The secondary prompt text in the modal presented when you select SMS.
@@ -93,11 +97,19 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 
 `buttonLabel` - The button label for the Web Chat channel.
 
+`buttonAriaLabel` - The button aria label for the Web Chat channel.
+
+`iconAriaLabel` - The icon aria label for the Web Chat channel.
+
 #### `facebook`
 
 `id` - Your facebook page id
 
 `buttonLabel` - The button label for the Facebook channel.
+
+`buttonAriaLabel` - The button aria label for the Facebook channel.
+
+`iconAriaLabel` - The icon aria label for the Facebook channel.
 
 #### `abc`
 
@@ -105,11 +117,19 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 
 `buttonLabel` - The button label for the Apple Business Chat channel.
 
+`buttonAriaLabel` - The button aria label for the Apple Business Chat channel.
+
+`iconAriaLabel` - The icon aria label for the Apple Business Chat channel.
+
 #### `whatsApp`
 
 `phoneNumber` - The 11 digit phone number for your WhatsApp endpoint (i.e. 406-555-1234 would be written as `'14065551234'`)
 
 `buttonLabel` - The button label for the WhatsApp channel.
+
+`buttonAriaLabel` - The button aria label for the WhatsApp channel.
+
+`iconAriaLabel` - The icon aria label for the WhatsApp channel.
 
 ### `order`
 
