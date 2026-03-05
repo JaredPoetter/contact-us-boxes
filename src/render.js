@@ -143,7 +143,7 @@ function _renderText(text) {
   return container
 }
 
-function _renderBasicButton(i, id, imgUrl, text) {
+function _renderBasicButton(i, id, imgUrl, text, buttonAriaLabel, iconAriaLabel) {
   var button = document.createElement('button')
   button.id = id
   button.classList.add('channelButton')
@@ -152,9 +152,17 @@ function _renderBasicButton(i, id, imgUrl, text) {
     button.style.fontFamily = config.styles.fontFamily
   }
 
+  if (buttonAriaLabel) {
+    button.ariaLabel = buttonAriaLabel
+  }
+
   var img = document.createElement('img')
   img.src = imgUrl
-  img.ariaLabel = `${text} Icon`
+  if (iconAriaLabel) {
+    img.ariaLabel = iconAriaLabel
+  } else {
+    img.ariaLabel = `${text} Icon`
+  }
   var icon = _renderIconContainer(img)
   var text = _renderText(text)
 
@@ -169,16 +177,25 @@ function _renderBasicButton(i, id, imgUrl, text) {
 
 function _renderSms(i, modalRenderTarget) {
   var buttonLabel = config.channels.sms.buttonLabel || 'SMS/Text'
+  var buttonAriaLabel = config?.channels?.sms?.buttonAriaLabel || undefined
+  var iconAriaLabel = config?.channels?.sms?.iconAriaLabel || undefined
+
   var button = _renderBasicButton(
     i,
     'smsButton',
     'https://www.quiq-cdn.com/wp-content/uploads/2018/08/SMS_white_150px.png',
     buttonLabel,
+    buttonAriaLabel,
+    iconAriaLabel,
   )
 
   if (isMobile()) {
     // If we're on a phone, this should just be an sms link
-    return _wrapInLinkTag(button, 'sms:+' + config.channels.sms.phoneNumber, buttonLabel)
+    return _wrapInLinkTag(
+      button,
+      'sms:+' + config.channels.sms.phoneNumber,
+      buttonAriaLabel || buttonLabel,
+    )
   } else {
     button.onclick = showSmsModal
     const modalContainer = renderSmsModal({
@@ -201,11 +218,16 @@ function _renderSms(i, modalRenderTarget) {
  */
 function _renderWebchat(i, useV2) {
   var buttonLabel = config.channels.webchat.buttonLabel || 'Web Chat'
+  var buttonAriaLabel = config?.channels?.webchat?.buttonAriaLabel || undefined
+  var iconAriaLabel = config?.channels?.webchat?.iconAriaLabel || undefined
+
   var button = _renderBasicButton(
     i,
     'webchatButton',
     'https://www.quiq-cdn.com/wp-content/uploads/2018/08/webchat-white.png',
     buttonLabel,
+    buttonAriaLabel,
+    iconAriaLabel,
   )
 
   button.onclick = () => launchWebchat(useV2)
@@ -213,14 +235,25 @@ function _renderWebchat(i, useV2) {
 }
 
 function _renderFacebook(i) {
+  var buttonAriaLabel = config?.channels?.facebook?.buttonAriaLabel || undefined
+  var iconAriaLabel = config?.channels?.facebook?.iconAriaLabel || undefined
+
   var button = document.createElement('div')
   button.id = 'facebookButton'
   button.classList.add('channelButton')
   if (config.styles?.fontFamily) {
     button.style.fontFamily = config.styles.fontFamily
   }
+  if (buttonAriaLabel) {
+    button.ariaLabel = buttonAriaLabel
+  }
 
   var img = renderFacebookMessengerIcon()
+  if (iconAriaLabel) {
+    img.ariaLabel = iconAriaLabel
+  } else {
+    img.ariaLabel = `${buttonLabel} Icon`
+  }
 
   var spacer = document.createElement('div')
   spacer.style.width = '45px'
@@ -236,7 +269,7 @@ function _renderFacebook(i) {
   var buttonLink = _wrapInLinkTag(
     button,
     'https://www.messenger.com/t/' + config.channels.facebook.id,
-    buttonLabel,
+    buttonAriaLabel || buttonLabel,
   )
 
   var parent = _renderAnimationContainer(i)
@@ -246,14 +279,25 @@ function _renderFacebook(i) {
 }
 
 function _renderWhatsApp(i) {
+  var buttonAriaLabel = config?.channels?.whatsApp?.buttonAriaLabel || undefined
+  var iconAriaLabel = config?.channels?.whatsApp?.iconAriaLabel || undefined
+
   var button = document.createElement('div')
   button.id = 'whatsAppButton'
   button.classList.add('channelButton')
   if (config.styles?.fontFamily) {
     button.style.fontFamily = config.styles.fontFamily
   }
+  if (buttonAriaLabel) {
+    button.ariaLabel = buttonAriaLabel
+  }
 
   var img = renderWhatsAppIcon()
+  if (iconAriaLabel) {
+    img.ariaLabel = iconAriaLabel
+  } else {
+    img.ariaLabel = `${buttonLabel} Icon`
+  }
 
   var spacer = document.createElement('div')
   spacer.style.width = '45px'
@@ -269,7 +313,7 @@ function _renderWhatsApp(i) {
   var buttonLink = _wrapInLinkTag(
     button,
     'https://wa.me/' + config.channels.whatsApp.phoneNumber,
-    buttonLabel,
+    buttonAriaLabel || buttonLabel,
   )
 
   var parent = _renderAnimationContainer(i)
@@ -279,11 +323,17 @@ function _renderWhatsApp(i) {
 }
 
 function _renderAbc(i) {
+  var buttonAriaLabel = config?.channels?.abc?.buttonAriaLabel || undefined
+  var iconAriaLabel = config?.channels?.abc?.iconAriaLabel || undefined
+
   var button = document.createElement('div')
   button.id = 'abcButton'
   button.classList.add('channelButton')
   if (config.styles?.fontFamily) {
     button.style.fontFamily = config.styles.fontFamily
+  }
+  if (buttonAriaLabel) {
+    button.ariaLabel = buttonAriaLabel
   }
 
   var icon = document.createElement('div')
@@ -292,6 +342,11 @@ function _renderAbc(i) {
   icon.dataset.appleIconColor = '#6e7883'
   icon.dataset.appleBusinessId = config.channels.abc.appleBusinessId
   icon.setAttribute('data-apple-icon-title', 'Apple Business Chat')
+  if (iconAriaLabel) {
+    icon.ariaLabel = iconAriaLabel
+  } else {
+    icon.ariaLabel = `${buttonLabel} Icon`
+  }
 
   var spacer = document.createElement('div')
   spacer.style.width = '45px'
@@ -309,7 +364,7 @@ function _renderAbc(i) {
   var buttonLink = _wrapInLinkTag(
     button,
     'https://bcrw.apple.com/urn:biz:' + config.channels.abc.appleBusinessId,
-    buttonLabel,
+    buttonAriaLabel || buttonLabel,
   )
 
   var parent = _renderAnimationContainer(i)
