@@ -26,6 +26,7 @@ export default async function render({config: configuration, renderTarget = docu
     color: config.styles?.buttonColor,
     renderTarget,
     useChatV2,
+    contactUsButton: config?.contactUsButton,
   })
   // Load external scripts if we need them
   await (config.order.includes('abc') ? importAppleScript() : Promise.resolve())
@@ -110,13 +111,16 @@ export default async function render({config: configuration, renderTarget = docu
   return {chat: chat || null}
 }
 
-function _wrapInLinkTag(element, href, ariaLabel) {
+function _wrapInLinkTag(element, href, ariaLabel, title) {
   var buttonLink = document.createElement('a')
   buttonLink.classList.add('channelButtonFocusable')
   buttonLink.href = href
   buttonLink.target = '_blank'
   buttonLink.rel = 'noopener'
   buttonLink.ariaLabel = ariaLabel
+  if (title) {
+    buttonLink.title = title
+  }
   buttonLink.appendChild(element)
 
   return buttonLink
@@ -143,17 +147,24 @@ function _renderText(text) {
   return container
 }
 
-function _renderBasicButton(i, id, imgUrl, text, buttonAriaLabel, iconAriaLabel) {
+function _renderBasicButton(i, id, imgUrl, text, buttonAriaLabel, iconAriaLabel, buttonTitle) {
   var button = document.createElement('button')
   button.id = id
   button.classList.add('channelButton')
   button.classList.add('channelButtonFocusable')
+
   if (config.styles?.fontFamily) {
     button.style.fontFamily = config.styles.fontFamily
   }
 
   if (buttonAriaLabel) {
     button.ariaLabel = buttonAriaLabel
+  } else {
+    button.ariaLabel = `${text} Button`
+  }
+
+  if (buttonTitle) {
+    button.title = buttonTitle
   }
 
   var img = document.createElement('img')
@@ -179,6 +190,7 @@ function _renderSms(i, modalRenderTarget) {
   var buttonLabel = config.channels.sms.buttonLabel || 'SMS/Text'
   var buttonAriaLabel = config?.channels?.sms?.buttonAriaLabel || undefined
   var iconAriaLabel = config?.channels?.sms?.iconAriaLabel || undefined
+  var buttonTitle = config?.channels?.sms?.buttonTitle || undefined
 
   var button = _renderBasicButton(
     i,
@@ -187,6 +199,7 @@ function _renderSms(i, modalRenderTarget) {
     buttonLabel,
     buttonAriaLabel,
     iconAriaLabel,
+    buttonTitle,
   )
 
   if (isMobile()) {
@@ -195,6 +208,7 @@ function _renderSms(i, modalRenderTarget) {
       button,
       'sms:+' + config.channels.sms.phoneNumber,
       buttonAriaLabel || buttonLabel,
+      buttonTitle,
     )
   } else {
     button.onclick = showSmsModal
@@ -220,6 +234,7 @@ function _renderWebchat(i, useV2) {
   var buttonLabel = config.channels.webchat.buttonLabel || 'Web Chat'
   var buttonAriaLabel = config?.channels?.webchat?.buttonAriaLabel || undefined
   var iconAriaLabel = config?.channels?.webchat?.iconAriaLabel || undefined
+  var buttonTitle = config?.channels?.webchat?.buttonTitle || undefined
 
   var button = _renderBasicButton(
     i,
@@ -228,6 +243,7 @@ function _renderWebchat(i, useV2) {
     buttonLabel,
     buttonAriaLabel,
     iconAriaLabel,
+    buttonTitle,
   )
 
   button.onclick = () => launchWebchat(useV2)
@@ -237,15 +253,13 @@ function _renderWebchat(i, useV2) {
 function _renderFacebook(i) {
   var buttonAriaLabel = config?.channels?.facebook?.buttonAriaLabel || undefined
   var iconAriaLabel = config?.channels?.facebook?.iconAriaLabel || undefined
+  var buttonTitle = config?.channels?.facebook?.buttonTitle || undefined
 
   var button = document.createElement('div')
   button.id = 'facebookButton'
   button.classList.add('channelButton')
   if (config.styles?.fontFamily) {
     button.style.fontFamily = config.styles.fontFamily
-  }
-  if (buttonAriaLabel) {
-    button.ariaLabel = buttonAriaLabel
   }
 
   var img = renderFacebookMessengerIcon()
@@ -269,7 +283,8 @@ function _renderFacebook(i) {
   var buttonLink = _wrapInLinkTag(
     button,
     'https://www.messenger.com/t/' + config.channels.facebook.id,
-    buttonAriaLabel || buttonLabel,
+    buttonAriaLabel || `${buttonLabel} Button`,
+    buttonTitle,
   )
 
   var parent = _renderAnimationContainer(i)
@@ -281,15 +296,13 @@ function _renderFacebook(i) {
 function _renderWhatsApp(i) {
   var buttonAriaLabel = config?.channels?.whatsApp?.buttonAriaLabel || undefined
   var iconAriaLabel = config?.channels?.whatsApp?.iconAriaLabel || undefined
+  var buttonTitle = config?.channels?.whatsApp?.buttonTitle || undefined
 
   var button = document.createElement('div')
   button.id = 'whatsAppButton'
   button.classList.add('channelButton')
   if (config.styles?.fontFamily) {
     button.style.fontFamily = config.styles.fontFamily
-  }
-  if (buttonAriaLabel) {
-    button.ariaLabel = buttonAriaLabel
   }
 
   var img = renderWhatsAppIcon()
@@ -313,7 +326,8 @@ function _renderWhatsApp(i) {
   var buttonLink = _wrapInLinkTag(
     button,
     'https://wa.me/' + config.channels.whatsApp.phoneNumber,
-    buttonAriaLabel || buttonLabel,
+    buttonAriaLabel || `${buttonLabel} Button`,
+    buttonTitle,
   )
 
   var parent = _renderAnimationContainer(i)
@@ -325,15 +339,13 @@ function _renderWhatsApp(i) {
 function _renderAbc(i) {
   var buttonAriaLabel = config?.channels?.abc?.buttonAriaLabel || undefined
   var iconAriaLabel = config?.channels?.abc?.iconAriaLabel || undefined
+  var buttonTitle = config?.channels?.abc?.buttonTitle || undefined
 
   var button = document.createElement('div')
   button.id = 'abcButton'
   button.classList.add('channelButton')
   if (config.styles?.fontFamily) {
     button.style.fontFamily = config.styles.fontFamily
-  }
-  if (buttonAriaLabel) {
-    button.ariaLabel = buttonAriaLabel
   }
 
   var icon = document.createElement('div')
@@ -364,7 +376,8 @@ function _renderAbc(i) {
   var buttonLink = _wrapInLinkTag(
     button,
     'https://bcrw.apple.com/urn:biz:' + config.channels.abc.appleBusinessId,
-    buttonAriaLabel || buttonLabel,
+    buttonAriaLabel || `${buttonLabel} Button`,
+    buttonTitle,
   )
 
   var parent = _renderAnimationContainer(i)
