@@ -62,6 +62,18 @@ This is useful if you want to set up this UI globally on your site, but want to 
 
 ## Configuration
 
+### `contactUsButton`
+
+This is used to customize parts of the main Contact Us button on the page.
+
+`openingTitle` - The title of the Contact Us button when the Contact Us Boxes' channels are hidden.
+
+`closingTitle` - The title of the Contact Us button when the Contact Us Boxes' channels are visible.
+
+`openingAriaLabel` - The aria label of the Contact Us button when the Contact Us Boxes' channels are hidden.
+
+`closingAriaLabel` - The aria label of the Contact Us button when the Contact Us Boxes' channels are visible.
+
 ### `channels`
 
 To add a channel, you need to add configuration so that the boxes point to your business.
@@ -75,6 +87,8 @@ Note: If you're on a mobile device, tapping on the box will redirect you to your
 `buttonLabel` - The button label for the SMS channel.
 
 `buttonAriaLabel` - The button aria label for the SMS channel.
+
+`buttonTitle` - The button title for the SMS channel.
 
 `iconAriaLabel` - The icon aria label for the SMS channel.
 
@@ -99,6 +113,8 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 
 `buttonAriaLabel` - The button aria label for the Web Chat channel.
 
+`buttonTitle` - The button title for the Web Chat channel.
+
 `iconAriaLabel` - The icon aria label for the Web Chat channel.
 
 #### `facebook`
@@ -108,6 +124,8 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 `buttonLabel` - The button label for the Facebook channel.
 
 `buttonAriaLabel` - The button aria label for the Facebook channel.
+
+`buttonTitle` - The button title for the Facebook channel.
 
 `iconAriaLabel` - The icon aria label for the Facebook channel.
 
@@ -119,6 +137,8 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 
 `buttonAriaLabel` - The button aria label for the Apple Business Chat channel.
 
+`buttonTitle` - The button title for the Apple Business Chat channel.
+
 `iconAriaLabel` - The icon aria label for the Apple Business Chat channel.
 
 #### `whatsApp`
@@ -128,6 +148,8 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 `buttonLabel` - The button label for the WhatsApp channel.
 
 `buttonAriaLabel` - The button aria label for the WhatsApp channel.
+
+`buttonTitle` - The button title for the WhatsApp channel.
 
 `iconAriaLabel` - The icon aria label for the WhatsApp channel.
 

@@ -1,14 +1,61 @@
-export default function renderMainButton({toggle, color, renderTarget, useChatV2}) {
+export default function renderMainButton({
+  toggle,
+  color,
+  renderTarget,
+  useChatV2,
+  contactUsButton,
+}) {
   const button = document.createElement('button')
   button.id = 'QuiqContactUsButton'
-  button.ariaLabel = 'Open Contact Us'
-  button.onclick = () => {
-    if (button.ariaLabel === 'Open Contact Us') {
-      button.ariaLabel = 'Close Contact Us'
-    } else {
-      button.ariaLabel = 'Open Contact Us'
+
+  // Customizing the main button based on the contactUsButton configuration
+  if (contactUsButton) {
+    var {openingAriaLabel, openingTitle, closingAriaLabel, closingTitle} = contactUsButton
+
+    if (openingAriaLabel) {
+      button.ariaLabel = openingAriaLabel
     }
-    return toggle()
+    if (openingTitle) {
+      button.title = openingTitle
+    }
+
+    button.onclick = () => {
+      var container = document.querySelector('#QuiqContactUsButtons')
+
+      // [NOTE] because this code runs before the container toggle code executes
+      // we need to check for the opposite of the container's display state
+      if (container.style.display === 'none') {
+        if (closingAriaLabel) {
+          button.ariaLabel = closingAriaLabel
+        }
+        if (closingTitle) {
+          button.title = closingTitle
+        }
+      } else {
+        if (openingAriaLabel) {
+          button.ariaLabel = openingAriaLabel
+        }
+        if (openingTitle) {
+          button.title = openingTitle
+        }
+      }
+      return toggle()
+    }
+  } else {
+    // Default button configuration
+    button.ariaLabel = 'Open Contact Us'
+    button.onclick = () => {
+      var container = document.querySelector('#QuiqContactUsButtons')
+
+      // [NOTE] because this code runs before the container toggle code executes
+      // we need to check for the opposite of the container's display state
+      if (container.style.display === 'none') {
+        button.ariaLabel = 'Close Contact Us'
+      } else {
+        button.ariaLabel = 'Open Contact Us'
+      }
+      return toggle()
+    }
   }
   button.style.backgroundColor = color || '#3f4654'
   if (useChatV2) {
