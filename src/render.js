@@ -269,8 +269,7 @@ function _renderFacebook(i) {
   var buttonLink = _wrapInLinkTag(
     button,
     'https://www.messenger.com/t/' + config.channels.facebook.id,
-    buttonLabel,
-    buttonAriaLabel,
+    buttonAriaLabel || buttonLabel,
   )
 
   var parent = _renderAnimationContainer(i)
