@@ -147,7 +147,7 @@ function _renderText(text) {
   return container
 }
 
-function _renderBasicButton(i, id, imgUrl, text, buttonAriaLabel, iconAriaLabel, buttonTitle) {
+function _renderBasicButton(i, id, imgUrl, text, buttonAriaLabel, buttonTitle) {
   var button = document.createElement('button')
   button.id = id
   button.classList.add('channelButton')
@@ -169,11 +169,7 @@ function _renderBasicButton(i, id, imgUrl, text, buttonAriaLabel, iconAriaLabel,
 
   var img = document.createElement('img')
   img.src = imgUrl
-  if (iconAriaLabel) {
-    img.ariaLabel = iconAriaLabel
-  } else {
-    img.ariaLabel = `${text} Icon`
-  }
+  img.alt = ''
   var icon = _renderIconContainer(img)
   var text = _renderText(text)
 
@@ -189,7 +185,6 @@ function _renderBasicButton(i, id, imgUrl, text, buttonAriaLabel, iconAriaLabel,
 function _renderSms(i, modalRenderTarget) {
   var buttonLabel = config.channels.sms.buttonLabel || 'SMS/Text'
   var buttonAriaLabel = config?.channels?.sms?.buttonAriaLabel || undefined
-  var iconAriaLabel = config?.channels?.sms?.iconAriaLabel || undefined
   var buttonTitle = config?.channels?.sms?.buttonTitle || undefined
 
   var button = _renderBasicButton(
@@ -198,7 +193,6 @@ function _renderSms(i, modalRenderTarget) {
     'https://www.quiq-cdn.com/wp-content/uploads/2018/08/SMS_white_150px.png',
     buttonLabel,
     buttonAriaLabel,
-    iconAriaLabel,
     buttonTitle,
   )
 
@@ -233,7 +227,6 @@ function _renderSms(i, modalRenderTarget) {
 function _renderWebchat(i, useV2) {
   var buttonLabel = config.channels.webchat.buttonLabel || 'Web Chat'
   var buttonAriaLabel = config?.channels?.webchat?.buttonAriaLabel || undefined
-  var iconAriaLabel = config?.channels?.webchat?.iconAriaLabel || undefined
   var buttonTitle = config?.channels?.webchat?.buttonTitle || undefined
 
   var button = _renderBasicButton(
@@ -242,7 +235,6 @@ function _renderWebchat(i, useV2) {
     'https://www.quiq-cdn.com/wp-content/uploads/2018/08/webchat-white.png',
     buttonLabel,
     buttonAriaLabel,
-    iconAriaLabel,
     buttonTitle,
   )
 
@@ -252,7 +244,6 @@ function _renderWebchat(i, useV2) {
 
 function _renderFacebook(i) {
   var buttonAriaLabel = config?.channels?.facebook?.buttonAriaLabel || undefined
-  var iconAriaLabel = config?.channels?.facebook?.iconAriaLabel || undefined
   var buttonTitle = config?.channels?.facebook?.buttonTitle || undefined
 
   var button = document.createElement('div')
@@ -263,11 +254,6 @@ function _renderFacebook(i) {
   }
 
   var img = renderFacebookMessengerIcon()
-  if (iconAriaLabel) {
-    img.ariaLabel = iconAriaLabel
-  } else {
-    img.ariaLabel = `${buttonLabel} Icon`
-  }
 
   var spacer = document.createElement('div')
   spacer.style.width = '45px'
@@ -295,7 +281,6 @@ function _renderFacebook(i) {
 
 function _renderWhatsApp(i) {
   var buttonAriaLabel = config?.channels?.whatsApp?.buttonAriaLabel || undefined
-  var iconAriaLabel = config?.channels?.whatsApp?.iconAriaLabel || undefined
   var buttonTitle = config?.channels?.whatsApp?.buttonTitle || undefined
 
   var button = document.createElement('div')
@@ -306,11 +291,6 @@ function _renderWhatsApp(i) {
   }
 
   var img = renderWhatsAppIcon()
-  if (iconAriaLabel) {
-    img.ariaLabel = iconAriaLabel
-  } else {
-    img.ariaLabel = `${buttonLabel} Icon`
-  }
 
   var spacer = document.createElement('div')
   spacer.style.width = '45px'
@@ -338,7 +318,6 @@ function _renderWhatsApp(i) {
 
 function _renderAbc(i) {
   var buttonAriaLabel = config?.channels?.abc?.buttonAriaLabel || undefined
-  var iconAriaLabel = config?.channels?.abc?.iconAriaLabel || undefined
   var buttonTitle = config?.channels?.abc?.buttonTitle || undefined
 
   var button = document.createElement('div')
@@ -348,22 +327,17 @@ function _renderAbc(i) {
     button.style.fontFamily = config.styles.fontFamily
   }
 
-  var icon = document.createElement('div')
-  icon.classList.add('apple-business-chat-message-container')
-  icon.dataset.appleIconBackgroundColor = '#ffffff'
-  icon.dataset.appleIconColor = '#6e7883'
-  icon.dataset.appleBusinessId = config.channels.abc.appleBusinessId
-  icon.setAttribute('data-apple-icon-title', 'Apple Business Chat')
-  if (iconAriaLabel) {
-    icon.ariaLabel = iconAriaLabel
-  } else {
-    icon.ariaLabel = `${buttonLabel} Icon`
-  }
+  var appleIconDiv = document.createElement('div')
+  appleIconDiv.classList.add('apple-business-chat-message-container')
+  appleIconDiv.dataset.appleIconBackgroundColor = '#ffffff'
+  appleIconDiv.dataset.appleIconColor = '#6e7883'
+  appleIconDiv.dataset.appleBusinessId = config.channels.abc.appleBusinessId
+  appleIconDiv.setAttribute('aria-hidden', 'true')
 
   var spacer = document.createElement('div')
   spacer.style.width = '45px'
   spacer.style.textAlign = 'center'
-  spacer.appendChild(icon)
+  spacer.appendChild(appleIconDiv)
   var icon = _renderIconContainer(spacer)
   var buttonLabel = config.channels.abc.buttonLabel || 'Apple Business Chat'
   var text = _renderText(buttonLabel)

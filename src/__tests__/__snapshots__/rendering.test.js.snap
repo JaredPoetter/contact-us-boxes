@@ -26,6 +26,7 @@ exports[`custom button color 1`] = `
             class="channelIcon"
           >
             <img
+              alt=""
               src="https://www.quiq-cdn.com/wp-content/uploads/2018/08/SMS_white_150px.png"
             />
           </div>
@@ -110,6 +111,7 @@ exports[`rendering buttons 1`] = `
             class="channelIcon"
           >
             <img
+              alt=""
               src="https://www.quiq-cdn.com/wp-content/uploads/2018/08/SMS_white_150px.png"
             />
           </div>
@@ -140,6 +142,7 @@ exports[`rendering buttons 1`] = `
                 style="width: 45px; text-align: center;"
               >
                 <svg
+                  aria-hidden="true"
                   enable-background="new 0 0 1000 1000"
                   height="45"
                   viewBox="0 0 1000 1000"
@@ -181,11 +184,11 @@ exports[`rendering buttons 1`] = `
                 style="width: 45px; text-align: center;"
               >
                 <div
+                  aria-hidden="true"
                   class="apple-business-chat-message-container"
                   data-apple-business-id="your-apple-business-id"
                   data-apple-icon-background-color="#ffffff"
                   data-apple-icon-color="#6e7883"
-                  data-apple-icon-title="Apple Business Chat"
                 />
               </div>
             </div>
@@ -208,6 +211,7 @@ exports[`rendering buttons 1`] = `
             class="channelIcon"
           >
             <img
+              alt=""
               src="https://www.quiq-cdn.com/wp-content/uploads/2018/08/webchat-white.png"
             />
           </div>
@@ -292,6 +296,7 @@ exports[`rendering buttons 2`] = `
             class="channelIcon"
           >
             <img
+              alt=""
               src="https://www.quiq-cdn.com/wp-content/uploads/2018/08/SMS_white_150px.png"
             />
           </div>
@@ -322,6 +327,7 @@ exports[`rendering buttons 2`] = `
                 style="width: 45px; text-align: center;"
               >
                 <svg
+                  aria-hidden="true"
                   enable-background="new 0 0 1000 1000"
                   height="45"
                   viewBox="0 0 1000 1000"
@@ -363,11 +369,11 @@ exports[`rendering buttons 2`] = `
                 style="width: 45px; text-align: center;"
               >
                 <div
+                  aria-hidden="true"
                   class="apple-business-chat-message-container"
                   data-apple-business-id="your-apple-business-id"
                   data-apple-icon-background-color="#ffffff"
                   data-apple-icon-color="#6e7883"
-                  data-apple-icon-title="Apple Business Chat"
                 />
               </div>
             </div>
@@ -390,6 +396,7 @@ exports[`rendering buttons 2`] = `
             class="channelIcon"
           >
             <img
+              alt=""
               src="https://www.quiq-cdn.com/wp-content/uploads/2018/08/webchat-white.png"
             />
           </div>

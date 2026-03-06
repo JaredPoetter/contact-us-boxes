@@ -5,6 +5,7 @@ export default function renderFacebookMessengerIcon() {
   icon.setAttribute('viewBox', '0 0 1000 1000')
   icon.setAttribute('enable-background', 'new 0 0 1000 1000')
   icon.setAttribute('xml:space', 'preserve')
+  icon.setAttribute('aria-hidden', 'true')
 
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
   path.setAttribute('fill', '#ffffff')
