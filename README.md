@@ -92,6 +92,8 @@ Note: If you're on a mobile device, tapping on the box will redirect you to your
 
 `iconAriaLabel` - The icon aria label for the SMS channel.
 
+`iconAltText` - The icon alt text for the SMS channel (used on the image `alt` attribute).
+
 `modalTitle` - The title in the modal presented when you select SMS.
 
 `modalPrompt` - The secondary prompt text in the modal presented when you select SMS.
@@ -117,6 +119,8 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 
 `iconAriaLabel` - The icon aria label for the Web Chat channel.
 
+`iconAltText` - The icon alt text for the Web Chat channel (used on the image `alt` attribute).
+
 #### `facebook`
 
 `id` - Your facebook page id
@@ -128,6 +132,8 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 `buttonTitle` - The button title for the Facebook channel.
 
 `iconAriaLabel` - The icon aria label for the Facebook channel.
+
+`iconAltText` - The icon alt text for the Facebook channel (used as the SVG icon's accessible name).
 
 #### `abc`
 
@@ -141,6 +147,8 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 
 `iconAriaLabel` - The icon aria label for the Apple Business Chat channel.
 
+`iconAltText` - The icon alt text for the Apple Business Chat channel (used for the icon's accessible name).
+
 #### `whatsApp`
 
 `phoneNumber` - The 11 digit phone number for your WhatsApp endpoint (i.e. 406-555-1234 would be written as `'14065551234'`)
@@ -152,6 +160,8 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 `buttonTitle` - The button title for the WhatsApp channel.
 
 `iconAriaLabel` - The icon aria label for the WhatsApp channel.
+
+`iconAltText` - The icon alt text for the WhatsApp channel (used as the SVG icon's accessible name).
 
 ### `order`
 

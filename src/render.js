@@ -147,7 +147,16 @@ function _renderText(text) {
   return container
 }
 
-function _renderBasicButton(i, id, imgUrl, text, buttonAriaLabel, iconAriaLabel, buttonTitle) {
+function _renderBasicButton(
+  i,
+  id,
+  imgUrl,
+  text,
+  buttonAriaLabel,
+  iconAriaLabel,
+  buttonTitle,
+  iconAltText,
+) {
   var button = document.createElement('button')
   button.id = id
   button.classList.add('channelButton')
@@ -169,10 +178,11 @@ function _renderBasicButton(i, id, imgUrl, text, buttonAriaLabel, iconAriaLabel,
 
   var img = document.createElement('img')
   img.src = imgUrl
-  if (iconAriaLabel) {
+  if (iconAltText || iconAltText === '') {
+    img.alt = iconAltText
+  }
+  if (iconAriaLabel || iconAriaLabel === '') {
     img.ariaLabel = iconAriaLabel
-  } else {
-    img.ariaLabel = `${text} Icon`
   }
   var icon = _renderIconContainer(img)
   var text = _renderText(text)
@@ -191,6 +201,7 @@ function _renderSms(i, modalRenderTarget) {
   var buttonAriaLabel = config?.channels?.sms?.buttonAriaLabel || undefined
   var iconAriaLabel = config?.channels?.sms?.iconAriaLabel || undefined
   var buttonTitle = config?.channels?.sms?.buttonTitle || undefined
+  var iconAltText = config?.channels?.sms?.iconAltText || undefined
 
   var button = _renderBasicButton(
     i,
@@ -200,6 +211,7 @@ function _renderSms(i, modalRenderTarget) {
     buttonAriaLabel,
     iconAriaLabel,
     buttonTitle,
+    iconAltText,
   )
 
   if (isMobile()) {
@@ -235,6 +247,7 @@ function _renderWebchat(i, useV2) {
   var buttonAriaLabel = config?.channels?.webchat?.buttonAriaLabel || undefined
   var iconAriaLabel = config?.channels?.webchat?.iconAriaLabel || undefined
   var buttonTitle = config?.channels?.webchat?.buttonTitle || undefined
+  var iconAltText = config?.channels?.webchat?.iconAltText
 
   var button = _renderBasicButton(
     i,
@@ -244,6 +257,7 @@ function _renderWebchat(i, useV2) {
     buttonAriaLabel,
     iconAriaLabel,
     buttonTitle,
+    iconAltText,
   )
 
   button.onclick = () => launchWebchat(useV2)
@@ -251,8 +265,10 @@ function _renderWebchat(i, useV2) {
 }
 
 function _renderFacebook(i) {
+  var buttonLabel = config.channels.facebook.buttonLabel || 'Facebook Messenger'
   var buttonAriaLabel = config?.channels?.facebook?.buttonAriaLabel || undefined
   var iconAriaLabel = config?.channels?.facebook?.iconAriaLabel || undefined
+  var iconAltText = config?.channels?.facebook?.iconAltText || undefined
   var buttonTitle = config?.channels?.facebook?.buttonTitle || undefined
 
   var button = document.createElement('div')
@@ -263,10 +279,13 @@ function _renderFacebook(i) {
   }
 
   var img = renderFacebookMessengerIcon()
-  if (iconAriaLabel) {
+  if (iconAriaLabel || iconAriaLabel === '') {
     img.ariaLabel = iconAriaLabel
-  } else {
-    img.ariaLabel = `${buttonLabel} Icon`
+  }
+  if (iconAltText || iconAltText === '') {
+    var titleEl = document.createElementNS('http://www.w3.org/2000/svg', 'title')
+    titleEl.textContent = iconAltText
+    img.insertBefore(titleEl, img.firstChild)
   }
 
   var spacer = document.createElement('div')
@@ -274,7 +293,6 @@ function _renderFacebook(i) {
   spacer.style.textAlign = 'center'
   spacer.appendChild(img)
   var icon = _renderIconContainer(spacer)
-  var buttonLabel = config.channels.facebook.buttonLabel || 'Facebook Messenger'
   var text = _renderText(buttonLabel)
 
   button.appendChild(icon)
@@ -294,8 +312,10 @@ function _renderFacebook(i) {
 }
 
 function _renderWhatsApp(i) {
+  var buttonLabel = config.channels.whatsApp.buttonLabel || 'WhatsApp'
   var buttonAriaLabel = config?.channels?.whatsApp?.buttonAriaLabel || undefined
   var iconAriaLabel = config?.channels?.whatsApp?.iconAriaLabel || undefined
+  var iconAltText = config?.channels?.whatsApp?.iconAltText || undefined
   var buttonTitle = config?.channels?.whatsApp?.buttonTitle || undefined
 
   var button = document.createElement('div')
@@ -306,10 +326,13 @@ function _renderWhatsApp(i) {
   }
 
   var img = renderWhatsAppIcon()
-  if (iconAriaLabel) {
+  if (iconAriaLabel || iconAriaLabel === '') {
     img.ariaLabel = iconAriaLabel
-  } else {
-    img.ariaLabel = `${buttonLabel} Icon`
+  }
+  if (iconAltText || iconAltText === '') {
+    var titleEl = document.createElementNS('http://www.w3.org/2000/svg', 'title')
+    titleEl.textContent = iconAltText
+    img.insertBefore(titleEl, img.firstChild)
   }
 
   var spacer = document.createElement('div')
@@ -317,7 +340,6 @@ function _renderWhatsApp(i) {
   spacer.style.textAlign = 'center'
   spacer.appendChild(img)
   var icon = _renderIconContainer(spacer)
-  var buttonLabel = config.channels.whatsApp.buttonLabel || 'WhatsApp'
   var text = _renderText(buttonLabel)
 
   button.appendChild(icon)
@@ -337,8 +359,10 @@ function _renderWhatsApp(i) {
 }
 
 function _renderAbc(i) {
+  var buttonLabel = config.channels.abc.buttonLabel || 'Apple Business Chat'
   var buttonAriaLabel = config?.channels?.abc?.buttonAriaLabel || undefined
   var iconAriaLabel = config?.channels?.abc?.iconAriaLabel || undefined
+  var iconAltText = config?.channels?.abc?.iconAltText || undefined
   var buttonTitle = config?.channels?.abc?.buttonTitle || undefined
 
   var button = document.createElement('div')
@@ -353,11 +377,11 @@ function _renderAbc(i) {
   icon.dataset.appleIconBackgroundColor = '#ffffff'
   icon.dataset.appleIconColor = '#6e7883'
   icon.dataset.appleBusinessId = config.channels.abc.appleBusinessId
-  icon.setAttribute('data-apple-icon-title', 'Apple Business Chat')
-  if (iconAriaLabel) {
+  if (iconAltText || iconAltText === '') {
+    icon.setAttribute('data-apple-icon-title', iconAltText)
+  }
+  if (iconAriaLabel || iconAriaLabel === '') {
     icon.ariaLabel = iconAriaLabel
-  } else {
-    icon.ariaLabel = `${buttonLabel} Icon`
   }
 
   var spacer = document.createElement('div')
@@ -365,7 +389,6 @@ function _renderAbc(i) {
   spacer.style.textAlign = 'center'
   spacer.appendChild(icon)
   var icon = _renderIconContainer(spacer)
-  var buttonLabel = config.channels.abc.buttonLabel || 'Apple Business Chat'
   var text = _renderText(buttonLabel)
 
   button.appendChild(icon)
