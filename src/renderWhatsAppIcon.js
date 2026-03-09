@@ -4,7 +4,6 @@ export default function renderWhatsAppIcon() {
   icon.setAttribute('height', '45')
   icon.setAttribute('viewBox', '0 0 448 512')
   icon.setAttribute('xml:space', 'preserve')
-  icon.setAttribute('aria-hidden', 'true')
 
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
   path.setAttribute('fill', '#ffffff')
