@@ -185,7 +185,6 @@ exports[`rendering buttons 1`] = `
                   data-apple-business-id="your-apple-business-id"
                   data-apple-icon-background-color="#ffffff"
                   data-apple-icon-color="#6e7883"
-                  data-apple-icon-title="Apple Business Chat"
                 />
               </div>
             </div>
@@ -367,7 +366,6 @@ exports[`rendering buttons 2`] = `
                   data-apple-business-id="your-apple-business-id"
                   data-apple-icon-background-color="#ffffff"
                   data-apple-icon-color="#6e7883"
-                  data-apple-icon-title="Apple Business Chat"
                 />
               </div>
             </div>
