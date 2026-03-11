@@ -268,7 +268,7 @@ function _renderFacebook(i) {
   var buttonLabel = config.channels.facebook.buttonLabel || 'Facebook Messenger'
   var buttonAriaLabel = config?.channels?.facebook?.buttonAriaLabel || undefined
   var iconAriaLabel = config?.channels?.facebook?.iconAriaLabel || undefined
-  var iconAltText = config?.channels?.facebook?.iconAltText || ''
+  var iconAltText = config?.channels?.facebook?.iconAltText || undefined
   var buttonTitle = config?.channels?.facebook?.buttonTitle || undefined
 
   var button = document.createElement('div')
@@ -315,7 +315,7 @@ function _renderWhatsApp(i) {
   var buttonLabel = config.channels.whatsApp.buttonLabel || 'WhatsApp'
   var buttonAriaLabel = config?.channels?.whatsApp?.buttonAriaLabel || undefined
   var iconAriaLabel = config?.channels?.whatsApp?.iconAriaLabel || undefined
-  var iconAltText = config?.channels?.whatsApp?.iconAltText || ''
+  var iconAltText = config?.channels?.whatsApp?.iconAltText || undefined
   var buttonTitle = config?.channels?.whatsApp?.buttonTitle || undefined
 
   var button = document.createElement('div')
@@ -362,7 +362,7 @@ function _renderAbc(i) {
   var buttonLabel = config.channels.abc.buttonLabel || 'Apple Business Chat'
   var buttonAriaLabel = config?.channels?.abc?.buttonAriaLabel || undefined
   var iconAriaLabel = config?.channels?.abc?.iconAriaLabel || undefined
-  var iconAltText = config?.channels?.abc?.iconAltText || ''
+  var iconAltText = config?.channels?.abc?.iconAltText || undefined
   var buttonTitle = config?.channels?.abc?.buttonTitle || undefined
 
   var button = document.createElement('div')
