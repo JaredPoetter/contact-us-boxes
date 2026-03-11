@@ -14,23 +14,28 @@ The latest version of this package can be installed using Quiq's CDN and configu
       sms: {
         phoneNumber: '15558675309',
         buttonLabel: 'SMS/Text',
+        iconAltText: '',
       },
       whatsApp: {
         phoneNumber: '15558675309',
         buttonLabel: 'WhatsApp',
+        iconAltText: '',
       },
       webchat: {
         tenant: 'your-tenant',
         options: {pageConfigurationId: 'your-page-configuration-id'},
         buttonLabel: 'Web Chat',
+        iconAltText: '',
       },
       facebook: {
         id: 'your-facebook-page-id',
         buttonLabel: 'Facebook Messenger',
+        iconAltText: '',
       },
       abc: {
         appleBusinessId: 'your-apple-business-id',
         buttonLabel: 'Apple Business Chat',
+        iconAltText: '',
       },
     },
     order: ['sms', 'facebook', 'abc', 'webchat', 'whatsApp'],
