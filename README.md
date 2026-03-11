@@ -14,28 +14,23 @@ The latest version of this package can be installed using Quiq's CDN and configu
       sms: {
         phoneNumber: '15558675309',
         buttonLabel: 'SMS/Text',
-        iconAltText: '',
       },
       whatsApp: {
         phoneNumber: '15558675309',
         buttonLabel: 'WhatsApp',
-        iconAltText: '',
       },
       webchat: {
         tenant: 'your-tenant',
         options: {pageConfigurationId: 'your-page-configuration-id'},
         buttonLabel: 'Web Chat',
-        iconAltText: '',
       },
       facebook: {
         id: 'your-facebook-page-id',
         buttonLabel: 'Facebook Messenger',
-        iconAltText: '',
       },
       abc: {
         appleBusinessId: 'your-apple-business-id',
         buttonLabel: 'Apple Business Chat',
-        iconAltText: '',
       },
     },
     order: ['sms', 'facebook', 'abc', 'webchat', 'whatsApp'],
@@ -138,7 +133,7 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 
 `iconAriaLabel` - The icon aria label for the Facebook channel.
 
-`iconAltText` - The icon alt text for the Facebook channel (used as the SVG icon's accessible name). Defaults to `""` (empty string).
+`iconAltText` - The icon alt text for the Facebook channel (used as the SVG icon's accessible name).
 
 #### `abc`
 
@@ -152,7 +147,7 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 
 `iconAriaLabel` - The icon aria label for the Apple Business Chat channel.
 
-`iconAltText` - The icon alt text for the Apple Business Chat channel (used for the icon's accessible name). Defaults to `""` (empty string).
+`iconAltText` - The icon alt text for the Apple Business Chat channel (used for the icon's accessible name).
 
 #### `whatsApp`
 
@@ -166,7 +161,7 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 
 `iconAriaLabel` - The icon aria label for the WhatsApp channel.
 
-`iconAltText` - The icon alt text for the WhatsApp channel (used as the SVG icon's accessible name). Defaults to `""` (empty string).
+`iconAltText` - The icon alt text for the WhatsApp channel (used as the SVG icon's accessible name).
 
 ### `order`
 
