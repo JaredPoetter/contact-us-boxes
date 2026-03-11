@@ -97,7 +97,7 @@ Note: If you're on a mobile device, tapping on the box will redirect you to your
 
 `iconAriaLabel` - The icon aria label for the SMS channel.
 
-`iconAltText` - The icon alt text for the SMS channel (used on the image `alt` attribute).
+`iconAltText` - The icon alt text for the SMS channel (used on the image `alt` attribute). Defaults to `""` (empty string).
 
 `modalTitle` - The title in the modal presented when you select SMS.
 
@@ -124,7 +124,7 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 
 `iconAriaLabel` - The icon aria label for the Web Chat channel.
 
-`iconAltText` - The icon alt text for the Web Chat channel (used on the image `alt` attribute).
+`iconAltText` - The icon alt text for the Web Chat channel (used on the image `alt` attribute). Defaults to `""` (empty string).
 
 #### `facebook`
 
@@ -138,7 +138,7 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 
 `iconAriaLabel` - The icon aria label for the Facebook channel.
 
-`iconAltText` - The icon alt text for the Facebook channel (used as the SVG icon's accessible name).
+`iconAltText` - The icon alt text for the Facebook channel (used as the SVG icon's accessible name). Defaults to `""` (empty string).
 
 #### `abc`
 
@@ -152,7 +152,7 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 
 `iconAriaLabel` - The icon aria label for the Apple Business Chat channel.
 
-`iconAltText` - The icon alt text for the Apple Business Chat channel (used for the icon's accessible name).
+`iconAltText` - The icon alt text for the Apple Business Chat channel (used for the icon's accessible name). Defaults to `""` (empty string).
 
 #### `whatsApp`
 
@@ -166,7 +166,7 @@ The recommended way to connect to your Quiq site is to add a `pageConfigurationI
 
 `iconAriaLabel` - The icon aria label for the WhatsApp channel.
 
-`iconAltText` - The icon alt text for the WhatsApp channel (used as the SVG icon's accessible name).
+`iconAltText` - The icon alt text for the WhatsApp channel (used as the SVG icon's accessible name). Defaults to `""` (empty string).
 
 ### `order`
 
